@@ -16,10 +16,8 @@ cardapio = [
 
 # BUSCA 
 def limpar_texto(texto):
-    # Passa tudo para minúsculo e tira os espaços das pontas
     texto = texto.lower().strip()
     
-    # Substitui manualmente os caracteres com acento pelos sem acento
     acentos = "áàãâéêíóõôúç"
     sem_acentos = "aaaaeeiooouc"
     
@@ -53,24 +51,26 @@ def exibir_lista(lista_drinks, titulo="Cardápio"):
     if len(lista_drinks) == 0:
         print("Nenhum drink encontrado.")
     else:
-        for i, drink in enumerate(lista_drinks, 1):
+        lista_ordenada = sorted(lista_drinks, key=lambda d: d["nome"])
+
+        for i, drink in enumerate(lista_ordenada, 1):
             ingredientes_texto = ", ".join(drink["ingredientes"])
             print(f"{i}. {drink['nome']}")
             print(f"   Ingredientes: {ingredientes_texto}")
     print("-" * 30)
 
-
 # MENU 
 def iniciar_sistema():
     while True:
         print("\n" + "="*30)
-        print(" cATÁLOGO DE COQUETÉIS")
+        print(" CATÁLOGO DE COQUETÉIS")
         print("="*30)
         print("1. Mostrar Todos os Drinks")
         print("2. Buscar Drink ou Ingrediente")
         print("3. Adicionar Novo Drink")
         print("4. Deletar um Drink")
-        print("5. Sair")
+        print("5. Editar um Drink")
+        print("6. Sair")
         
         opcao = input("\nEscolha uma opção (1-5): ").strip()
         
@@ -116,7 +116,7 @@ def iniciar_sistema():
                 print(f"⚠️ Erro: Drink '{nome_deletar}' não encontrado no cardápio.")
                 
         # OPÇÃO 5
-        elif opcao == "5":
+        elif opcao == "6":
             print("\nSaindo do sistema...")
             break
             
