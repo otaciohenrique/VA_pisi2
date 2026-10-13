@@ -68,11 +68,11 @@ def iniciar_sistema():
         print("1. Mostrar Todos os Drinks")
         print("2. Buscar Drink ou Ingrediente")
         print("3. Adicionar Novo Drink")
-        print("4. Deletar um Drink")
-        print("5. Editar um Drink")
+        print("4. Editar um Drink")
+        print("5. Deletar um Drink")
         print("6. Sair")
         
-        opcao = input("\nEscolha uma opção (1-5): ").strip()
+        opcao = input("\nEscolha uma opção (1-6): ").strip()
         
         # OPÇÃO 1
         if opcao == "1":
@@ -97,9 +97,39 @@ def iniciar_sistema():
                 novo_drink = {"nome": nome, "ingredientes": lista_ingredientes}
                 cardapio.append(novo_drink)
                 print(f"✅ Drink '{nome}' adicionado com sucesso!")
-                
-        # OPÇÃO 4
+
+        #OPÇÃO 4
         elif opcao == "4":
+            print("\n--- Editar Drink ---")
+            exibir_lista(cardapio, "Drinks Disponíveis")
+            nome_editar = input("\nDigite o NOME EXATO do drink que deseja editar:").strip()
+
+            drink_encontrado = False
+            for drink in cardapio:
+                if limpar_texto(drink["nome"]) == limpar_texto(nome_editar):
+                    drink_encontrado = True
+                    print(f"\nEditando: {drink['nome']} ")
+
+                    novo_nome = input(f"Novo nome: ").strip()
+                    if novo_nome != "":
+                        drink["nome"] = novo_nome
+
+                    ingredientes_atuais = ", ".join(drink["ingredientes"])
+                    print(f"Ingredientes: {ingredientes_atuais}")
+                    novos_ingredientes = input("Novos ingredientes separados por vírgula: ").strip()
+                    
+                    if novos_ingredientes != "":            
+                        lista_ingredientes = [i.strip() for i in novos_ingredientes.split(",")]
+                        drink["ingredientes"] = lista_ingredientes
+                        
+                    print(f"✅ Drink '{drink['nome']}' atualizado com sucesso!")
+                    break 
+            
+            if not drink_encontrado:
+                print(f"⚠️ Erro: Drink '{nome_editar}' não encontrado no cardápio.")
+
+        # OPÇÃO 5
+        elif opcao == "5":
             print("\n--- Deletar Drink ---")
             exibir_lista(cardapio, "Drinks Disponíveis")
             nome_deletar = input("\nDigite o NOME EXATO do drink que deseja deletar: ").strip()
@@ -114,15 +144,15 @@ def iniciar_sistema():
             
             if not drink_encontrado:
                 print(f"⚠️ Erro: Drink '{nome_deletar}' não encontrado no cardápio.")
-                
-        # OPÇÃO 5
+
+        # OPÇÃO 6
         elif opcao == "6":
             print("\nSaindo do sistema...")
             break
             
         # OPÇÃO INVÁLIDA
         else:
-            print("\n⚠️ Opção inválida! Digite um número de 1 a 5.")
+            print("\n⚠️ Opção inválida! Digite um número de 1 a 6.")
 
 
 # EXECUÇÃO
