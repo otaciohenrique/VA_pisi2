@@ -1,9 +1,9 @@
-from cardapio import cardapio 
-from utils import limpar_texto, exibir_lista
-from buscar import buscar_drink
-from adicionar import adicionar_drink
-from editar import editar_drink
-from deletar import deletar_drink
+from sistema.cardapio import cardapio 
+from sistema.utils import exibir_lista
+from sistema.buscar import buscar_drink
+from sistema.adicionar import adicionar_drink
+from sistema.editar import editar_drink
+from sistema.deletar import deletar_drink
 
 
 # MENU 
@@ -28,8 +28,8 @@ def iniciar_sistema():
         # OPÇÃO 2
         elif opcao == "2":
             termo = input("\nDigite o nome ou ingrediente para buscar: ")
-            resultados = buscar_drink(termo)
-            exibir_lista(resultados, f"Resultados para '{termo}'")
+            buscar_drink(termo, cardapio)
+            
             
         # OPÇÃO 3
         elif opcao == "3":
@@ -53,6 +53,3 @@ def iniciar_sistema():
             print("\n⚠️ Opção inválida! Digite um número de 1 a 6.")
 
 
-# EXECUÇÃO
-if __name__ == "__main__":
-    iniciar_sistema()

@@ -1,6 +1,5 @@
 from utils import limpar_texto, exibir_lista
 
-# EDITAR
 def editar_drink(lista_cardapio):
     print("\n--- Editar Drink ---")
     exibir_lista(lista_cardapio, "Drinks Disponíveis")
@@ -27,5 +26,5 @@ def editar_drink(lista_cardapio):
                 print(f"✅ Drink '{drink['nome']}' atualizado com sucesso!")
                 break 
             
-        if not drink_encontrado:
+    if not drink_encontrado:
             print(f"⚠️ Erro: Drink '{nome_editar}' não encontrado no cardápio.")

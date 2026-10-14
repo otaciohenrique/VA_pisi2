@@ -1,6 +1,5 @@
 from utils import limpar_texto, exibir_lista
 
-# DELETAR
 def deletar_drink(lista_cardapio):
     print("\n--- Deletar Drink ---")
     exibir_lista(lista_cardapio, "Drinks Disponíveis")
