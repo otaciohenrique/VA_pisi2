@@ -28,7 +28,7 @@ def iniciar_sistema():
         # OPÇÃO 2
         elif opcao == "2":
             termo = input("\nDigite o nome ou ingrediente para buscar: ")
-            resultados = buscar_drink(termo)
+            resultados = buscar_drink(termo, cardapio)
             exibir_lista(resultados, f"Resultados para '{termo}'")
             
         # OPÇÃO 3
