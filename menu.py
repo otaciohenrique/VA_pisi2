@@ -1,70 +1,11 @@
 from cardapio import cardapio 
 from comuns import limpar_texto, exibir_lista
-from busca import buscar_drink
+from buscar import buscar_drink
+from adicionar import adicionar_drink
+from editar import editar_drink
+from deletar import deletar_drink
 
 
-
-
-# ADICIONAR
-def adicionar_drink(lista_cardapio):
-    print("\n--- Adicionar Novo Drink ---")
-    nome = input("Nome do drink: ").strip()
-    ingredientes_texto = input("Ingredientes: ").strip()
-            
-    if nome == "" or ingredientes_texto == "":
-        print("⚠️ Erro: Nome e ingredientes não podem ficar em branco.")
-    else:
-        lista_ingredientes = [ingrediente.strip() for ingrediente in ingredientes_texto.split(",")]
-        novo_drink = {"nome": nome, "ingredientes": lista_ingredientes}
-        lista_cardapio.append(novo_drink)
-        print(f"✅ Drink '{nome}' adicionado com sucesso!")
-
-# EDITAR
-def editar_drink(lista_cardapio):
-    print("\n--- Editar Drink ---")
-    exibir_lista(lista_cardapio, "Drinks Disponíveis")
-    nome_editar = input("\nDigite o NOME EXATO do drink que deseja editar:").strip()
-
-    drink_encontrado = False
-    for drink in lista_cardapio:
-        if limpar_texto(drink["nome"]) == limpar_texto(nome_editar):
-            drink_encontrado = True
-            print(f"\nEditando: {drink['nome']} ")
-
-            novo_nome = input(f"Novo nome: ").strip()
-            if novo_nome != "":
-                drink["nome"] = novo_nome
-
-                ingredientes_atuais = ", ".join(drink["ingredientes"])
-                print(f"Ingredientes: {ingredientes_atuais}")
-                novos_ingredientes = input("Novos ingredientes separados por vírgula: ").strip()
-                    
-                if novos_ingredientes != "":            
-                    lista_ingredientes = [i.strip() for i in novos_ingredientes.split(",")]
-                    drink["ingredientes"] = lista_ingredientes
-                        
-                print(f"✅ Drink '{drink['nome']}' atualizado com sucesso!")
-                break 
-            
-        if not drink_encontrado:
-            print(f"⚠️ Erro: Drink '{nome_editar}' não encontrado no cardápio.")
-# DELETAR
-def deletar_drink(lista_cardapio):
-    print("\n--- Deletar Drink ---")
-    exibir_lista(lista_cardapio, "Drinks Disponíveis")
-    nome_deletar = input("\nDigite o NOME EXATO do drink que deseja deletar: ").strip()
-                 
-    drink_encontrado = False
-    for drink in lista_cardapio:
-        if limpar_texto(drink["nome"]) == limpar_texto(nome_deletar):
-            lista_cardapio.remove(drink)
-            print(f"🗑 Drink '{drink['nome']}' deletado com sucesso!")
-            drink_encontrado = True
-            break 
-                 
-    if not drink_encontrado:
-        print(f"⚠️ Erro: Drink '{nome_deletar}' não encontrado no cardápio.")
-     
 # MENU 
 def iniciar_sistema():
     while True:
