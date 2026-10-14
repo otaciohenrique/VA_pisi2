@@ -1,3 +1,4 @@
+
 def limpar_texto(texto):
     texto = texto.lower().strip()
     

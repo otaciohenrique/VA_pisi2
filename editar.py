@@ -1,4 +1,4 @@
-from comuns import limpar_texto, exibir_lista
+from utils import limpar_texto, exibir_lista
 
 # EDITAR
 def editar_drink(lista_cardapio):

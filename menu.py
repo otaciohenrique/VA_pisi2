@@ -1,5 +1,5 @@
 from cardapio import cardapio 
-from comuns import limpar_texto, exibir_lista
+from utils import limpar_texto, exibir_lista
 from buscar import buscar_drink
 from adicionar import adicionar_drink
 from editar import editar_drink
@@ -28,7 +28,7 @@ def iniciar_sistema():
         # OPÇÃO 2
         elif opcao == "2":
             termo = input("\nDigite o nome ou ingrediente para buscar: ")
-            resultados = buscar_drink(termo, cardapio)
+            resultados = buscar_drink(termo)
             exibir_lista(resultados, f"Resultados para '{termo}'")
             
         # OPÇÃO 3

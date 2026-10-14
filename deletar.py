@@ -1,4 +1,4 @@
-from comuns import limpar_texto, exibir_lista
+from utils import limpar_texto, exibir_lista
 
 # DELETAR
 def deletar_drink(lista_cardapio):
