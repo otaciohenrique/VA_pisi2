@@ -9,6 +9,7 @@
 - **CRUD Completo:** Adição, edição ou exclusão de novos drinks e ingredientes.
   
 ## release 2.0
+- **Gestão de Usuários:** Sistema completo para criar, visualizar, editar e remover perfis de usuários.
 - **Gestão Financeira:** Suporte para cálculos de custo e teor alcoólico das receitas cadastradas.
 - **Estoque Inteligente:** Cruzamento de dados entre os ingredientes necessários e o que está disponível.
 - **Interface:** Mudança de CLI (linha de comando) para um ambiente visual mais amigável e intuitivo, focado na facilidade de navegação.
