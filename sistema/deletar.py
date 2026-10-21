@@ -1,4 +1,4 @@
-from utils import limpar_texto, exibir_lista
+from sistema.utils import limpar_texto, exibir_lista
 
 def deletar_drink(lista_cardapio):
     print("\n--- Deletar Drink ---")

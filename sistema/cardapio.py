@@ -1,4 +1,3 @@
-# Cardápio 
 
 cardapio = [
     {"nome": "Mojito", "ingredientes": ["Rum", "Hortelã", "Açúcar", "Suco de Limão", "Água com gás"]},

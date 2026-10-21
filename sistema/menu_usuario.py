@@ -7,7 +7,7 @@ from sistema.deletar import deletar_drink
 
 
 # MENU 
-def iniciar_sistema():
+def menu_usuario():
     while True:
         print("\n" + "="*30)
         print(" CATÁLOGO DE COQUETÉIS")

@@ -1,4 +1,4 @@
-from sistema.menu import iniciar_sistema
+from usuario.menu_iniciar import menu_iniciar
 
 if __name__ == "__main__":
-    iniciar_sistema()
+    menu_iniciar()

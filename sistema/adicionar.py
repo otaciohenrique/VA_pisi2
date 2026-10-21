@@ -1,4 +1,3 @@
-# ADICIONAR
 def adicionar_drink(lista_cardapio):
     print("\n--- Adicionar Novo Drink ---")
     nome = input("Nome do drink: ").strip()
