@@ -1,5 +1,6 @@
-from login import login
-from cadastro import cadastrar_usuario
+from usuario.login import login_usuario
+from usuario.cadastro import cadastrar_usuario
+from sistema.menu_usuario import menu_usuario
 
 def menu_iniciar():
     while True:
@@ -14,7 +15,9 @@ def menu_iniciar():
             
             # OPÇÃO 1
             if opcao == "1":
-                login()
+                login_usuario()
+                menu_usuario()
+                
                 
             # OPÇÃO 2
             elif opcao == "2":
@@ -22,7 +25,7 @@ def menu_iniciar():
 
             # OPÇÃO 3
             elif opcao == "3":
-                print("\nSaindo do sistema...")
+                print("\nSaindo do sistema.")
                 break
                              
             # OPÇÃO INVÁLIDA

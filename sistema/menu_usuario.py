@@ -45,8 +45,9 @@ def menu_usuario():
 
         # OPÇÃO 6
         elif opcao == "6":
-            print("\nSaindo do sistema...")
+            print("\nSaindo da Conta")
             break
+        
             
         # OPÇÃO INVÁLIDA
         else:

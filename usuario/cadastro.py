@@ -1,5 +1,5 @@
 from datetime import datetime
-from usuarios import usuarios 
+from usuario.usuarios import usuarios 
 
 def cadastrar_usuario():
     while True:
@@ -18,6 +18,7 @@ def cadastrar_usuario():
             }
             usuarios.append(novo_usuario)
             print("\n✅ Cadastro realizado com sucesso!")
+            return
 
 def cadastro_data_nasc():
     while True:
@@ -31,7 +32,7 @@ def cadastro_data_nasc():
             if idade >= 18:
                 return data_str 
             else:
-                print(f"❌ Cadastro bloqueado: Proibido para menores de 18 anos")
+                print("❌ Cadastro bloqueado: Proibido para menores de 18 anos")
                 return None 
                 
         except ValueError:

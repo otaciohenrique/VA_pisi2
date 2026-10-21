@@ -1,6 +1,6 @@
-from usuarios import usuarios 
+from usuario.usuarios import usuarios 
 
-def login():
+def login_usuario():
     print("\n--- LOGIN ---")
     usuario = nome_usuario()
     senha_salva = usuario["senha"]
