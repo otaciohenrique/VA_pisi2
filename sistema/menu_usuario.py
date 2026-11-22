@@ -4,20 +4,30 @@ from sistema.buscar import buscar_drink
 from sistema.adicionar import adicionar_drink
 from sistema.editar import editar_drink
 from sistema.deletar import deletar_drink
+from rich.console import Console
+from rich.table import Table
+
+console = Console()
 
 
 # MENU 
 def menu_usuario():
     while True:
-        print("\n" + "="*30)
-        print(" CATÁLOGO DE COQUETÉIS")
-        print("="*30)
-        print("1. Mostrar Todos os Drinks")
-        print("2. Buscar Drink ou Ingrediente")
-        print("3. Adicionar Novo Drink")
-        print("4. Editar um Drink")
-        print("5. Deletar um Drink")
-        print("6. Sair")
+        console.clear
+        tabela = Table(title="GERENCIADOR", title_style="bold blue")
+
+        tabela.add_column("Opção", justify="center", style="bold white", no_wrap=True)
+        tabela.add_column("Ação", style="white")
+
+        tabela.add_row("1.", "Mostrar Todos os Drinks")
+        tabela.add_row("2.", "Buscar Drink ou Ingrediente")
+        tabela.add_row("3.", "Adicionar Drink")
+        tabela.add_row("4.", "Editar um Drink")
+        tabela.add_row("5.", "Deletar um Drink")
+        tabela.add_row("6.", "Sair")
+
+        print()
+        console.print(tabela)
         
         opcao = input("\nEscolha uma opção (1-6): ").strip()
         
@@ -29,8 +39,7 @@ def menu_usuario():
         elif opcao == "2":
             termo = input("\nDigite o nome ou ingrediente para buscar: ")
             buscar_drink(termo, cardapio)
-            
-            
+             
         # OPÇÃO 3
         elif opcao == "3":
             adicionar_drink(cardapio)
@@ -47,7 +56,6 @@ def menu_usuario():
         elif opcao == "6":
             print("\nSaindo da Conta")
             break
-        
             
         # OPÇÃO INVÁLIDA
         else:

@@ -1,3 +1,6 @@
+from rich.console import Console
+
+console = Console()
 
 def limpar_texto(texto):
     texto = texto.lower().strip()
@@ -12,7 +15,8 @@ def limpar_texto(texto):
 
  
 def exibir_lista(lista_drinks, titulo="Cardápio"):
-    print(f"\n--- {titulo.upper()} ---")
+    console.clear ()
+    console.print(f"\n--- {titulo.upper()} ---", style="bold yellow")
     if len(lista_drinks) == 0:
         print("Nenhum drink encontrado.")
     else:
