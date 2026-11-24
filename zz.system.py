@@ -1,7 +1,6 @@
 # 1. Cardádio
 # 2. Pesquisar
-# 3. Todos os Drinks
-# 4. Gerenciador
+# 3. Gerenciador
     #1. Exibir Drinks
         #1. Criar Novo drink
         #2. Editar Drink
@@ -14,11 +13,11 @@
             #1. Editar Nome
             #2. Editar Disponibilidade
             #3. Voltar
-# 5. Configurações
+# 4. Configurações
     # 1. Editar Nome de Usuário
     # 2. Editar Senha
     # 3. Voltar
-# 6. Sair
+# 5. Sair
 
 def limpar_texto(texto):
     texto = texto.lower().strip()
@@ -45,27 +44,5 @@ def exibir_lista(lista_drinks, titulo="Cardápio"):
             print(f"   Ingredientes: {ingredientes_texto}")
     print("-" * 30)
 
-class Ingrediente:
-    def __init__(self, nome, disponivel=True):
-        self.nome = nome
-        self.disponivel = disponivel
 
-    def esta_disponivel(self):
-        for ingrediente in self.ingredientes:
-            if not ingrediente.disponivel:
-                return False
-        return True
-
-class Drink:
-    def __init__(self, nome, ingredientes, modo_preparo, apresentacao):
-        self.nome = nome
-        self.ingredientes = ingredientes
-        self.modo_preparo = modo_preparo
-        self.apresentacao = apresentacao
-
-    def esta_disponivel(self):
-        for ingrediente in self.ingredientes:
-            if not ingrediente.disponivel:
-                return False
-        return True
 

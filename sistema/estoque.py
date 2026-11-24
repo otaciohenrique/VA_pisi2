@@ -74,12 +74,12 @@ def adicionar_ingrediente():
 
     while True:
         
-        nome = console.input("[yellow]Digite o nome do novo ingrediente:[/yellow] ").strip()
+        nome = console.input("Digite o nome do novo ingrediente: ").strip()
         if not nome:
             console.print("[bold red]O nome não pode ficar vazio![/bold red]\n")
             return
     
-        resposta = console.input("[yellow]O ingrediente está disponível agora? (S/N):[/yellow] ").strip().upper()
+        resposta = console.input("O ingrediente está disponível ? (S/N): ").strip().upper()
         if resposta == "S":
             esta_disponivel = True
         else:
@@ -110,9 +110,42 @@ def editar_ingrediente():
             if item["nome"].lower() == nome.lower():
                 encontrado = True
 
-            novo_nome = console.input(f"[yellow]Novo nome (deixe em branco para manter '{item['nome']}'):[/yellow] ").strip()
-            if novo_nome:
-                item["nome"] = novo_nome.capitalize()
+                console.print(f"\n[bold green]Ingrediente '{item['nome']}' encontrado![/bold green]")
+
+                print("\nO que você deseja editar?")
+                print("1. Nome")
+                print("2. Disponibilidade")
+
+                escolha = console.input("\nEscolha uma opção (1-2): ").strip()
+
+                if escolha == "1":
+                    novo_nome = console.input(f"Digite o futuro nome (Atual: '{item['nome']}'): ").strip()
+                    if novo_nome:
+                        item["nome"] = novo_nome.capitalize()
+                        console.print("[bold green]✅ Nome atualizado com sucesso![/bold green]\n")
+                    else:
+                        console.print("[bold red]O nome não pode ficar vazio![/bold red]\n")
+                        
+                elif escolha == "2":
+                    status_atual = "S" if item["disponivel"] else "N"
+                    novo_status = console.input(f"O ingrediente está disponível agora? (Atual: {status_atual}) (S/N):[/yellow] ").strip().upper()
+                    
+                    if novo_status == "S":
+                        item["disponivel"] = True
+                        console.print("[bold green]✅ Disponibilidade atualizada com sucesso![/bold green]\n")
+                    elif novo_status == "N":
+                        item["disponivel"] = False
+                        console.print("[bold green]✅ Disponibilidade atualizada com sucesso![/bold green]\n")
+                    else:
+                        console.print("[bold red]Opção inválida! Nenhuma alteração foi feita.[/bold red]\n")
+                        
+                else:
+                    console.print("[bold red]Opção Inválida![/bold red]\n")
+
+                return
+
+        if not encontrado:
+            console.print("[bold red]Ingrediente não encontrado! Tente novamente.[/bold red]\n")
 
 
     

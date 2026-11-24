@@ -1,9 +1,9 @@
 from sistema.cardapio import cardapio 
 from sistema.utils import exibir_lista
 from sistema.buscar import buscar_drink
-from sistema.adicionar import adicionar_drink
-from sistema.editar import editar_drink
-from sistema.deletar import deletar_drink
+from sistema.cardapio import adicionar_drink
+from sistema.cardapio import editar_drink
+from sistema.cardapio import deletar_drink
 from rich.console import Console
 from rich.table import Table
 
