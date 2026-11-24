@@ -1,9 +1,20 @@
 from datetime import datetime
 from usuario.usuarios import usuarios 
+from rich.console import Console
+from rich.panel import Panel
+
+console = Console()
+
 
 def cadastrar_usuario():
+    console.clear()
+
     while True:
-        print("\n--- CADASTRO DE USUÁRIO ---")
+        painel = Panel("[bold blue] CADASTRO [/]", border_style="blue", expand=False)
+        console.print(painel)
+        
+        print()
+
         data_nasc = cadastro_data_nasc()
 
         if data_nasc is not None:
@@ -22,8 +33,15 @@ def cadastrar_usuario():
 
 def cadastro_data_nasc():
     while True:
-        print ("Digite no formato (DD/MM/AAAA):")
-        data_str = input("Data de nascimento ").strip()
+        painel = Panel("[white] Digite sua data de nascimento: [/]", border_style="white", expand=False)
+        console.print(painel)
+
+        dia = console.input("[bold blue] Dia: [/]").strip()
+        mes = console.input("[bold blue] Mês: [/]").strip()
+        ano = console.input("[bold blue] Ano: [/]").strip()
+
+        data_str = f"{dia}/{mes}/{ano}"
+
         try:
             data_nasc = datetime.strptime(data_str, "%d/%m/%Y")
             hoje = datetime.now()
@@ -32,7 +50,7 @@ def cadastro_data_nasc():
             if idade >= 18:
                 return data_str 
             else:
-                print("❌ Cadastro bloqueado: Proibido para menores de 18 anos")
+                console.print("❌ [bold red] Proibido para menores de 18 anos[/]")
                 return None 
                 
         except ValueError:

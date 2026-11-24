@@ -4,15 +4,15 @@ from rich import box
 
 console = Console()
 
-
-def mostrar_estoque():
-    ingredientes = [
+ingredientes = [
         {"nome": "Vodka", "disponivel": True},
         {"nome": "Rum", "disponivel": False},
         {"nome": "Limão", "disponivel": True},
         {"nome": "Hortelã", "disponivel": False},
         {"nome": "Açúcar", "disponivel": True}
     ]
+
+def mostrar_estoque():
 
     disponiveis = [item for item in ingredientes if item["disponivel"] == True]
     indisponiveis = [item for item in ingredientes if item["disponivel"] == False]
@@ -47,10 +47,76 @@ def mostrar_estoque():
     print()
 
 def opcoes_estoque():
-    print ("1. Adicionar Ingrediente")
-    print ("2. Editar Ingrediente")
-    print ("3. Voltar ao Gerenciador")
+
+    while True:
+
+        mostrar_estoque()
+            
+        print ("1. Adicionar")
+        print ("2. Editar")
+        print ("3. Voltar")
+
+        opcao = console.input("\nEscolha uma opção (1-3): ").strip()
+
+        if opcao == "1":
+            adicionar_ingrediente()
+
+        elif opcao == "2":
+            editar_ingrediente()
+
+        elif  opcao == "3":
+            break
+
+        else:
+            console.print ("Opção Inválida! Digite um número de 1 a 3")
+
+def adicionar_ingrediente():
+
+    while True:
+        
+        nome = console.input("[yellow]Digite o nome do novo ingrediente:[/yellow] ").strip()
+        if not nome:
+            console.print("[bold red]O nome não pode ficar vazio![/bold red]\n")
+            return
+    
+        resposta = console.input("[yellow]O ingrediente está disponível agora? (S/N):[/yellow] ").strip().upper()
+        if resposta == "S":
+            esta_disponivel = True
+        else:
+            esta_disponivel = False
+
+        ingredientes.append({
+            "nome": nome.capitalize(),
+            "disponivel": esta_disponivel
+        })
+
+        console.print(f"\n[bold green]✅ '{nome.capitalize()}' adicionado com sucesso![/bold green]\n")
+
+        console.input("Digite qualquer tecla para voltar")
+        break
+
+def editar_ingrediente():
+
+    while True:
+
+        nome = console.input("[yellow]Digite o nome do Ingrediente que deseja editar ou 'cancelar' para voltar:[/yellow] ").strip()
+
+        if nome.lower() == 'cancelar':
+            break
+          
+        encontrado = False
+
+        for item in ingredientes:
+            if item["nome"].lower() == nome.lower():
+                encontrado = True
+
+            novo_nome = console.input(f"[yellow]Novo nome (deixe em branco para manter '{item['nome']}'):[/yellow] ").strip()
+            if novo_nome:
+                item["nome"] = novo_nome.capitalize()
 
 
-mostrar_estoque()
+    
+
+
+
 opcoes_estoque()
