@@ -1,6 +1,7 @@
 from sistema.utils import limpar_texto
 from sistema.estoque import ingredientes
 from rich.console import Console
+from rich.panel import Panel
 
 console = Console()
 
@@ -9,7 +10,7 @@ cardapio = [
     {"nome": "Mojito", "ingredientes": ["Rum", "Hortelã", "Açúcar", "Suco de Limão", "Água com gás"]},
     {"nome": "Caipirinha", "ingredientes": ["Cachaça", "Limão", "Açúcar", "Gelo"]},
     {"nome": "Gin Tônica", "ingredientes": ["Gin", "Água Tônica", "Limão", "Gelo"]},
-    {"nome": "Negroni", "ingredientes": ["Gin", "Campari", "Vermute Tinto", "Casca de Laranja", "Gelo"]},
+    {"nome": "Negroni", "ingredientes": ["Gin", "Campari", "Vermute Tinto", "Gelo"]},
     {"nome": "Margarita", "ingredientes": ["Tequila", "Licor de Laranja", "Suco de Limão", "Sal", "Gelo"]},
     {"nome": "Moscow Mule", "ingredientes": ["Vodka", "Cerveja ou Refrigerante de Gengibre", "Suco de Limão", "Xarope de Açúcar", "Gelo"]},
     {"nome": "Aperol Spritz", "ingredientes": ["Aperol", "Espumante Prosecco", "Água com gás", "Fatia de Laranja", "Gelo"]},
@@ -18,7 +19,7 @@ cardapio = [
 ]
 
 
-def exibir_lista(lista_drinks, titulo="Cardápio"):
+def exibir_lista(lista_drinks, titulo="Todos os Drinks"):
     console.clear ()
     console.print(f"\n--- {titulo.upper()} ---", style="bold yellow")
     if len(lista_drinks) == 0:
@@ -32,6 +33,25 @@ def exibir_lista(lista_drinks, titulo="Cardápio"):
             print(f"   Ingredientes: {ingredientes_texto}")
     print("-" * 30)
 
+def buscar_drink(termo, lista_cardapio):
+    console.clear()
+    resultados = []
+    termo_limpo = limpar_texto(termo)
+    
+    for drink in lista_cardapio:
+        nome_limpo = limpar_texto(drink["nome"])
+        
+        if termo_limpo in nome_limpo:
+            resultados.append(drink)
+            continue 
+        
+        for ingrediente in drink["ingredientes"]:
+            ingrediente_limpo = limpar_texto(ingrediente)
+            if termo_limpo in ingrediente_limpo:
+                resultados.append(drink)
+                break 
+                
+    exibir_lista(resultados, f"Resultados para '{termo}'")
 
 def adicionar_drink(lista_cardapio):
     print("\n--- Adicionar Novo Drink ---")
@@ -62,19 +82,19 @@ def editar_drink(lista_cardapio):
             if novo_nome != "":
                 drink["nome"] = novo_nome
 
-                ingredientes_atuais = ", ".join(drink["ingredientes"])
-                print(f"Ingredientes: {ingredientes_atuais}")
-                novos_ingredientes = input("Novos ingredientes separados por vírgula: ").strip()
+            ingredientes_atuais = ", ".join(drink["ingredientes"])
+            print(f"Ingredientes: {ingredientes_atuais}")
+            novos_ingredientes = input("Novos ingredientes separados por vírgula: ").strip()
                     
-                if novos_ingredientes != "":            
-                    lista_ingredientes = [i.strip() for i in novos_ingredientes.split(",")]
-                    drink["ingredientes"] = lista_ingredientes
+            if novos_ingredientes != "":            
+                lista_ingredientes = [i.strip() for i in novos_ingredientes.split(",")]
+                drink["ingredientes"] = lista_ingredientes
                         
-                print(f"✅ Drink '{drink['nome']}' atualizado com sucesso!")
-                break 
+            print(f"✅ Drink '{drink['nome']}' atualizado com sucesso!")
+            break 
             
     if not drink_encontrado:
-            print(f"⚠️ Erro: Drink '{nome_editar}' não encontrado no cardápio.")
+            print(f"⚠️ Erro '{nome_editar}' não encontrado no cardápio.")
 
 
 def deletar_drink(lista_cardapio):
@@ -95,12 +115,14 @@ def deletar_drink(lista_cardapio):
 
 
 def mostrar_cardapio():
+    console.clear()
     estoque_disponivel = [
         limpar_texto(item["nome"]) for item in ingredientes if item["disponivel"]
     ]
 
     console.clear()
-    console.print("[bold blue]--- CARDÁPIO ---[/bold blue]\n")
+    painel = Panel("[bold blue] CARDÁPIO [/]", border_style="blue", expand=False)
+    console.print(painel)
 
     nenhum_drink_disponivel = True
 
@@ -121,5 +143,39 @@ def mostrar_cardapio():
         console.print("[bold red]Não há ingredientes suficientes para nenhum drink no momento.[/bold red]")
         
     print()
+
+def opcoes_drink():
+    
+    while True:
+        console.clear()
+    
+        exibir_lista(cardapio)
+                
+        print ("1. Adicionar Drink")
+        print ("2. Editar Drink")
+        print ("3. Excluir Drink")
+        print ("4. Voltar")
+    
+        opcao = console.input("\nEscolha uma opção (1-3): ").strip()
+    
+        if opcao == "1":
+            adicionar_drink(cardapio)
+    
+        elif opcao == "2":
+            editar_drink(cardapio)
+
+        elif opcao == "3":
+            deletar_drink(cardapio)
+    
+        elif  opcao == "4":
+            break
+    
+        else:
+            console.print ("Opção Inválida! Digite um número de 1 a 3")
+
+
+
+
+
 
     

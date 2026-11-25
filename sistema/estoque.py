@@ -9,7 +9,12 @@ ingredientes = [
         {"nome": "Rum", "disponivel": False},
         {"nome": "Limão", "disponivel": True},
         {"nome": "Hortelã", "disponivel": False},
-        {"nome": "Açúcar", "disponivel": True}
+        {"nome": "Açúcar", "disponivel": True},
+        {"nome": "Gelo", "disponivel": True},
+        {"nome": "Cachaça", "disponivel": True},
+        {"nome": "Gin", "disponivel": True},
+        {"nome": "Vermute Tinto", "disponivel": True},
+        {"nome": "Campari", "disponivel": True}
     ]
 
 def mostrar_estoque():
@@ -152,4 +157,3 @@ def editar_ingrediente():
 
 
 
-opcoes_estoque()

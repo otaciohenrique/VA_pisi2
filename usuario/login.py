@@ -16,6 +16,8 @@ def login_usuario():
     senha_salva = usuario["senha"]
     senha_usuario(senha_salva)
 
+    return usuario
+
 def nome_usuario():
     while True:
         nome_digitado = console.input("[bold blue] Usuário: ").strip()

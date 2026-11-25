@@ -14,16 +14,3 @@ def limpar_texto(texto):
     return texto
 
  
-def exibir_lista(lista_drinks, titulo="Cardápio"):
-    console.clear ()
-    console.print(f"\n--- {titulo.upper()} ---", style="bold yellow")
-    if len(lista_drinks) == 0:
-        print("Nenhum drink encontrado.")
-    else:
-        lista_ordenada = sorted(lista_drinks, key=lambda d: d["nome"])
-
-        for i, drink in enumerate(lista_ordenada, 1):
-            ingredientes_texto = ", ".join(drink["ingredientes"])
-            print(f"{i}. {drink['nome']}")
-            print(f"   Ingredientes: {ingredientes_texto}")
-    print("-" * 30)
