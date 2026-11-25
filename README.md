@@ -35,13 +35,11 @@ Resultado: O usuário só visualiza no painel do cardápio os drinks que realmen
 
 ## 2. Instalação das Dependências
 **Para que a interface gráfica via terminal funcione corretamente, instale a biblioteca rich utilizando o gerenciador de pacotes do Python:**
-
-*pip install rich*
+- *pip install rich*
 
 ## 3. Execução
 **No terminal, navegue até a raiz do projeto (onde está localizado o arquivo main.py) e execute o comando:**
-
-*python main.py*
+- *python main.py*
 
 # 🗺️ Funcionalidades
 ## release 1.0
