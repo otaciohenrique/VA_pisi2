@@ -44,7 +44,7 @@ Resultado: O usuário só visualiza no painel do cardápio os drinks que realmen
 # 🗺️ Funcionalidades
 ## release 1.0
 - **Catálogo Centralizado:** Visualização de todos os drinks e fichas técnicas em ordem alfabética.
-- **Sistema de Busca Inteligente:** Encontra coquetéis pelo nome ou pesquisando por ingredientes específicos.
+- **Busca Composta:** Encontra coquetéis pelo nome ou pesquisando por ingredientes específicos.
 - **Gestão de Coquetéis:** Adição, edição e exclusão de drinks.
 - **Gestão de Usuários:** Sistema completo para criar, visualizar, editar e remover o perfil do usuário logado.
   
@@ -52,4 +52,5 @@ Resultado: O usuário só visualiza no painel do cardápio os drinks que realmen
 - **Gestão de Ingredientes:** Adição, edição e exclusão de ingredientes.
 - **Gestão de Disponibilidade:** Exibir e editar a disponibilidade dos ingrediente.
 - **Estoque Inteligente:** Cruzamento de dados entre os ingredientes necessários e os ingredientes disponíveis.
+- **Cardápio Automatizado:** O cardápio exibe apenas os drinks que possuem todos os ingredientes disponíveis. 
 - **Interface:** Utilização da biblioteca rich para a criação de uma interface agradável e intuitiva. 
