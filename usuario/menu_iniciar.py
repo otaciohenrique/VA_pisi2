@@ -5,12 +5,13 @@ from rich.console import Console
 from rich.table import Table
 from rich import box
 from rich.panel import Panel
+import os
 
 console = Console()
 
 def menu_iniciar():
     while True:
-        console.clear ()
+        os.system('cls')
         painel = Panel("[bold blue] CATÁLOGO DE COQUETÉIS [/]", border_style="blue", expand=False)
         console.print(painel)
             

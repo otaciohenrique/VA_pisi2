@@ -5,6 +5,7 @@ from rich.panel import Panel
 from rich import box
 from sistema.estoque import opcoes_estoque
 from usuario.usuarios import configuracao
+import os
 
 console = Console()
 
@@ -12,7 +13,7 @@ console = Console()
 # MENU 
 def menu_usuario(usuario_logado):
     while True:
-        console.clear()
+        os.system('cls')
         painel = Panel("[bold blue] MENU  [/]", border_style="blue", expand=False)
         console.print(painel)
 
@@ -65,7 +66,7 @@ def menu_usuario(usuario_logado):
 
 def menu_gerenciar ():
     while True:
-        console.clear()
+        os.system('cls')
         painel = Panel("[bold blue] GERENCIADOR [/]", border_style="blue", expand=False)
         console.print(painel)
                    

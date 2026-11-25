@@ -2,12 +2,13 @@ from datetime import datetime
 from usuario.usuarios import usuarios 
 from rich.console import Console
 from rich.panel import Panel
+import os
 
 console = Console()
 
 
 def cadastrar_usuario():
-    console.clear()
+    os.system('cls')
 
     while True:
         painel = Panel("[bold blue] CADASTRO [/]", border_style="blue", expand=False)
@@ -54,13 +55,14 @@ def cadastro_data_nasc():
                 return None 
                 
         except ValueError:
-            print("⚠️ Inválido! Digite no formato DD/MM/AAAA. ⚠️")
+            print(" Inválido! Digite no formato DD/MM/AAAA. ")
+            console.input ("Aperte qualquer tecla para voltar")
 
 def cadastro_nome():
     while True:
         nome = input("Escolha o nome de usuário: ").strip()
         if nome == "":
-            print ("⚠️ Erro: O nome não pode ficar em branco. ⚠️")
+            print (" Erro: O nome não pode ficar em branco. ")
             continue
 
         nome_existente = False
@@ -69,7 +71,8 @@ def cadastro_nome():
                 nome_existente = True
                 break
         if nome_existente:
-            print("⚠️ Erro: Este nome de usuário já está em uso. Escolha outro. ⚠️")
+            print(" Erro: Este nome de usuário já está em uso. Escolha outro. ")
+            console.input ("Aperte qualquer tecla para voltar")
         else:
             return nome
         
@@ -79,7 +82,8 @@ def cadastro_senha():
         senha = input("Escolha uma senha: ").strip()
 
         if len(senha) < 8:
-            print("⚠️ Erro: A senha precisa ter 8 ou mais caracteres.")
+            print(" Erro: A senha precisa ter 8 ou mais caracteres.")
+            console.input ("Aperte qualquer tecla para voltar")
             continue
 
         tem_maiuscula = False
@@ -98,4 +102,5 @@ def cadastro_senha():
             return senha
         else:
             print("⚠️ Erro: Tente a senha novamente ⚠️")
+            console.input ("Aperte qualquer tecla para voltar")
 

@@ -1,6 +1,8 @@
 from rich.console import Console
 from rich.table import Table
 from rich import box
+import os
+
 
 console = Console()
 
@@ -25,8 +27,8 @@ def mostrar_estoque():
     disponiveis = sorted(disponiveis, key=lambda x: x["nome"])
     indisponiveis = sorted(indisponiveis, key=lambda x: x["nome"])
 
-    console.clear()
-
+    os.system('cls')
+    
     tabela = Table(
         title="ESTOQUE DE INGREDIENTES", 
         title_style="bold blue",

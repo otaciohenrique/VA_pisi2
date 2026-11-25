@@ -1,16 +1,17 @@
 from usuario.usuarios import usuarios 
 from rich.console import Console
 from rich.panel import Panel
+import os
 
 console = Console()
 
 def login_usuario():
-    console.clear ()
+    os.system('cls')
 
     painel = Panel("[bold blue] LOGIN [/]", border_style="blue", expand=False)
     console.print(painel)
 
-    print()
+    console.print()
 
     usuario = nome_usuario()
     senha_salva = usuario["senha"]
@@ -20,6 +21,7 @@ def login_usuario():
 
 def nome_usuario():
     while True:
+                
         nome_digitado = console.input("[bold blue] Usuário: ").strip()
         if nome_digitado == "":
             console.print ("⚠️ Erro: O Nome de Usuário não pode ficar em branco. ⚠️")

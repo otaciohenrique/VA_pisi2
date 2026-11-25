@@ -2,6 +2,8 @@ from sistema.utils import limpar_texto
 from sistema.estoque import ingredientes
 from rich.console import Console
 from rich.panel import Panel
+import os
+
 
 console = Console()
 
@@ -20,7 +22,7 @@ cardapio = [
 
 
 def exibir_lista(lista_drinks, titulo="Todos os Drinks"):
-    console.clear ()
+    os.system('cls')
     console.print(f"\n--- {titulo.upper()} ---", style="bold yellow")
     if len(lista_drinks) == 0:
         print("Nenhum drink encontrado.")
@@ -34,7 +36,7 @@ def exibir_lista(lista_drinks, titulo="Todos os Drinks"):
     print("-" * 30)
 
 def buscar_drink(termo, lista_cardapio):
-    console.clear()
+    os.system('cls')
     resultados = []
     termo_limpo = limpar_texto(termo)
     
@@ -115,12 +117,12 @@ def deletar_drink(lista_cardapio):
 
 
 def mostrar_cardapio():
-    console.clear()
+    os.system('cls')
     estoque_disponivel = [
         limpar_texto(item["nome"]) for item in ingredientes if item["disponivel"]
     ]
 
-    console.clear()
+    os.system('cls')
     painel = Panel("[bold blue] CARDÁPIO [/]", border_style="blue", expand=False)
     console.print(painel)
 
@@ -147,7 +149,7 @@ def mostrar_cardapio():
 def opcoes_drink():
     
     while True:
-        console.clear()
+        os.system('cls')
     
         exibir_lista(cardapio)
                 
