@@ -53,4 +53,7 @@ Resultado: O usuário só visualiza no painel do cardápio os drinks que realmen
 - **Gestão de Disponibilidade:** Exibir e editar a disponibilidade dos ingrediente.
 - **Estoque Inteligente:** Cruzamento de dados entre os ingredientes necessários e os ingredientes disponíveis.
 - **Cardápio Dinâmico:** O cardápio exibe apenas os drinks que possuem todos os ingredientes disponíveis. 
-- **Interface:** Utilização da biblioteca rich para a criação de uma interface agradável e intuitiva. 
+- **Interface:** Utilização da biblioteca rich para a criação de uma interface agradável e intuitiva.
+
+## release 2.1
+- **POO:** Inclusão da classe "Usuário".
