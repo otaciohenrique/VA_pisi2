@@ -158,7 +158,7 @@ def opcoes_drink():
         print ("3. Excluir Drink")
         print ("4. Voltar")
     
-        opcao = console.input("\nEscolha uma opção (1-3): ").strip()
+        opcao = console.input("\nEscolha uma opção (1-4): ").strip()
     
         if opcao == "1":
             adicionar_drink(cardapio)
