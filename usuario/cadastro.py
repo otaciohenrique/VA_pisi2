@@ -1,11 +1,11 @@
 from datetime import datetime
-from usuario.usuarios import usuarios 
+from datetime import datetime
+from usuario.usuarios import usuarios, Usuario 
 from rich.console import Console
 from rich.panel import Panel
 import os
 
 console = Console()
-
 
 def cadastrar_usuario():
     os.system('cls')
@@ -22,12 +22,8 @@ def cadastrar_usuario():
             nome_u = cadastro_nome()
             senha = cadastro_senha()
 
-            novo_usuario = {
-                "nome": nome_u,
-                "senha": senha,
-                "data_nasc": data_nasc
-  
-            }
+            novo_usuario = Usuario(nome_u, senha, data_nasc)
+            
             usuarios.append(novo_usuario)
             print("\n✅ Cadastro realizado com sucesso!")
             return
@@ -67,9 +63,11 @@ def cadastro_nome():
 
         nome_existente = False
         for usuario_salvo in usuarios:
-            if usuario_salvo["nome"] == nome:
+            # MUDANÇA: Acessando o atributo 'nome' do objeto
+            if usuario_salvo.nome == nome:
                 nome_existente = True
                 break
+                
         if nome_existente:
             print(" Erro: Este nome de usuário já está em uso. Escolha outro. ")
             console.input ("Aperte qualquer tecla para voltar")
@@ -103,4 +101,3 @@ def cadastro_senha():
         else:
             print("⚠️ Erro: Tente a senha novamente ⚠️")
             console.input ("Aperte qualquer tecla para voltar")
-

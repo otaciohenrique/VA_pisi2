@@ -14,8 +14,9 @@ def login_usuario():
     console.print()
 
     usuario = nome_usuario()
-    senha_salva = usuario["senha"]
-    senha_usuario(senha_salva)
+    
+    # MUDANÇA: Passamos o objeto 'usuario' inteiro para verificação, sem expor a senha
+    senha_usuario(usuario)
 
     return usuario
 
@@ -27,26 +28,26 @@ def nome_usuario():
             console.print ("⚠️ Erro: O Nome de Usuário não pode ficar em branco. ⚠️")
             continue
 
-        usuario_encontrado = False
-        for usuario_salvo in usuarios:
-            if usuario_salvo["nome"] == nome_digitado:
-                usuario_encontrado = True
+        usuario_encontrado = None
+        for usuario_salvo in usuarios:            
+            if usuario_salvo.get_nome() == nome_digitado:
+                usuario_encontrado = usuario_salvo
                 break
+                
         if not usuario_encontrado:
             console.print("Nome de Usuário não encontrado")
         else:
-            return usuario_salvo
+            return usuario_encontrado
 
-def senha_usuario(senha_correta):
-     while True:
+def senha_usuario(usuario_encontrado):
+    while True:
         senha_digitada = console.input("[bold blue] Senha: ").strip()
         if senha_digitada == "":
             console.print ("⚠️ Erro: A Senha não pode ficar em branco. ⚠️")
             continue
 
-        elif senha_digitada == senha_correta:
-            return senha_correta
+        # MUDANÇA: Utilizamos o método nativo do objeto para validar a segurança
+        elif usuario_encontrado.verificar_senha(senha_digitada):
+            return True
         else:
-            console.print ("⚠️  Senha Incorreta ⚠️") 
-            
-
+            console.print ("⚠️  Senha Incorreta ⚠️")
